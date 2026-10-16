@@ -1,59 +1,38 @@
-# EventhubFarahGharbi
+# EventHub
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.26.
+## Description
+Application Angular 21 qui permet de consulter les événements d'une association étudiante, d'afficher leurs détails, de les filtrer par catégorie et de gérer une sélection de favoris. Les données sont définies dans le code TypeScript. L'interface est responsive (ordinateur et téléphone) et suit automatiquement le thème clair ou sombre de l'appareil.
 
-## Development server
+## Versions utilisées
+- Angular CLI : 21.2.27
+- @angular/core : 21.2.25
+- Node.js : 24.22.0
 
-To start a local development server, run:
-
+## Installation et lancement
 ```bash
+npm install
 ng serve
 ```
+Puis ouvrir http://localhost:4200
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Structure des composants
+- **Header** : affiche le titre et le menu de navigation, avec la page active mise en évidence.
+- **EventList** : contient la liste des événements, les favoris et la catégorie choisie, et affiche une carte par événement.
+- **EventCard** : affiche les informations d'un événement et signale au parent un clic sur le bouton favori.
+- **EventDetails** : récupère l'identifiant dans l'URL et affiche l'événement correspondant, ou un message s'il n'existe pas.
+- **NotFound** : page affichée quand l'URL ne correspond à aucune route.
+- **About** : page de présentation, chargée en lazy loading.
 
-## Code scaffolding
+## Fonctionnalités réalisées
+- Liste des événements avec @for et @empty
+- Favoris avec compteur (Signals, input() et output())
+- Filtre par catégorie
+- Routage : /events, /events/:id, /about, page introuvable, redirection de l'URL vide
+- Lazy loading de la page About
+- Interface responsive et mode sombre automatique
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Design
+- Palette : bleu méditerranéen, jaune soleil, blanc, corail pour les favoris, une couleur par catégorie.
+- Polices : Bricolage Grotesque (titres) et Plus Jakarta Sans (texte).
+- Styles partagés (couleurs, boutons, badges) dans `src/styles.css` via des variables CSS.
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
