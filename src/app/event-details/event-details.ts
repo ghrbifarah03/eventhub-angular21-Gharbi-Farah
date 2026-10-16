@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { EVENTS } from '../event-list/event-list';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-event-details',
-  imports: [],
+  imports: [DatePipe, CurrencyPipe,RouterLink],
   templateUrl: './event-details.html',
   styleUrl: './event-details.css',
 })

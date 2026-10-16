@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+.code {
+  font: 800 clamp(4rem, 15vw, 7rem) / 1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--blue);
+  text-decoration: underline 0.12em var(--sun);
+  text-underline-offset: 0.1em;
+}

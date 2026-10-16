@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+.lead {
+  max-width: 52ch;
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+}
+.points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.points li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--sun);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+.points p {
+  color: var(--ink-soft);
+}

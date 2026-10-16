@@ -1,10 +1,36 @@
-<h1>Catalogue d'événements</h1>
-<p>Favoris : {{ favoritesCount() }}</p>
+<section class="intro">
+  <div>
+    <h1>Catalogue d'événements</h1>
+    <p class="lead">
+      Concerts, ateliers et tournois de l'association : choisis une catégorie et garde tes préférés.
+    </p>
+  </div>
+  <p class="favorites" aria-live="polite">
+    <span aria-hidden="true">♥</span>
+    Favoris
+    <strong>{{ favoritesCount() }}</strong>
+  </p>
+</section>
 
-<div class="filters">
-  @for (category of categories; track category) {
-    <button (click)="selectCategory(category)">{{ category }}</button>
-  }
+<div class="toolbar">
+  <div class="filters" role="group" aria-label="Filtrer par catégorie">
+    @for (category of categories; track category) {
+      <button
+        type="button"
+        class="chip"
+        [class.active]="selectedCategory() === category"
+        [attr.aria-pressed]="selectedCategory() === category"
+        (click)="selectCategory(category)"
+      >
+        {{ category }}
+      </button>
+    }
+  </div>
+
+  <p class="count">
+    {{ filteredEvents().length }}
+    {{ filteredEvents().length === 1 ? 'événement' : 'événements' }}
+  </p>
 </div>
 
 <div class="grid">
@@ -15,6 +41,6 @@
       (toggleFavorite)="onToggleFavorite($event)"
     />
   } @empty {
-    <p>Aucun événement disponible</p>
+    <p class="state">Aucun événement disponible</p>
   }
 </div>

@@ -1,18 +1,40 @@
 <article class="card">
-  <img [src]="event().imageUrl" [alt]="event().title" />
-  <h3>{{ event().title }}</h3>
-  <p>{{ event().category }}</p>
-  <p>{{ event().date | date: 'dd/MM/yyyy' }}</p>
-  <p>{{ event().price | currency: 'TND' }}</p>
+  <div class="media">
+    <img [src]="event().imageUrl" [alt]="event().title" />
+    <time class="stub" [attr.datetime]="event().date">
+      <span class="day">{{ event().date | date: 'dd' }}</span>
+      <span class="month">{{ event().date | date: 'MMM yyyy' }}</span>
+    </time>
+    <span class="price" [class.free]="event().price === 0">
+      @if (event().price === 0) {
+        Gratuit
+      } @else {
+        {{ event().price | currency: 'TND' }}
+      }
+    </span>
+  </div>
 
-  <button [ngClass]="{ active: isFavorite() }" (click)="onToggle()">
-    @if (isFavorite()) {
-      Retirer des favoris
-    } @else {
-      Ajouter aux favoris
-    }
-  </button>
+  <div class="body">
+    <span class="badge" [attr.data-category]="event().category">{{ event().category }}</span>
+    <h3>{{ event().title }}</h3>
+    <p class="place">{{ event().place }}</p>
+    <p class="desc">{{ event().description }}</p>
+  </div>
 
-    <a [routerLink]="['/events', event().id]">Voir les détails</a>
-
+  <div class="actions">
+    <a class="btn" [routerLink]="['/events', event().id]">Voir les détails</a>
+    <button
+      type="button"
+      class="fav-btn"
+      [ngClass]="{ active: isFavorite() }"
+      [attr.aria-pressed]="isFavorite()"
+      (click)="onToggle()"
+    >
+      @if (isFavorite()) {
+        <span aria-hidden="true">♥</span> Retirer des favoris
+      } @else {
+        <span aria-hidden="true">♡</span> Ajouter aux favoris
+      }
+    </button>
+  </div>
 </article>

@@ -1,29 +1,64 @@
-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
-  background: #4f46e5;
-  color: white;
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-h1 {
-  margin: 0;
-  font-size: 1.4rem;
+header {
+  background: var(--header-bg);
+  border-bottom: 3px solid var(--sun);
+  color: #fff;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+  text-decoration: none;
+}
+.mark {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 10px;
+  background: var(--sun);
+  color: var(--sun-ink);
+  font: 800 1.2rem var(--font-display);
+}
+.name {
+  font: 800 1.3rem var(--font-display);
+  letter-spacing: -0.02em;
 }
 nav {
   display: flex;
-  gap: 1rem;
+  gap: 0.25rem;
 }
 nav a {
-  color: #e0e7ff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  color: #c9d6ff;
+  font-weight: 600;
   text-decoration: none;
-  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
 }
-
+nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
 nav a.active {
-  color: white;
-  font-weight: bold;
-  text-decoration: underline;
+  background: var(--sun);
+  color: var(--sun-ink);
+}
+a:focus-visible {
+  outline-color: var(--sun);
 }

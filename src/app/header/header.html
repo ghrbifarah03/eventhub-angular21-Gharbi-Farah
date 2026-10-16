@@ -1,7 +1,12 @@
 <header>
-  <h1>{{ title }}</h1>
-  <nav>
-    <a routerLink="/events" routerLinkActive="active">Events</a>
-    <a routerLink="/about" routerLinkActive="active">About</a>
-  </nav>
+  <div class="bar">
+    <a class="brand" routerLink="/events">
+      <span class="mark" aria-hidden="true">E</span>
+      <span class="name">{{ title }}</span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <a routerLink="/events" routerLinkActive="active" ariaCurrentWhenActive="page">Événements</a>
+      <a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">À propos</a>
+    </nav>
+  </div>
 </header>

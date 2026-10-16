@@ -1,1 +1,184 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* Palette « Sidi Bou Saïd » : bleu méditerranéen, jaune soleil, blanc, corail pour les favoris */
+:root {
+  color-scheme: light dark;
+  --ink: #0e1b3d;
+  --ink-soft: #4a5876;
+  --bg: #f4f7ff;
+  --surface: #ffffff;
+  --line: #dde5f6;
+  --header-bg: #14307f;
+
+  --blue: #1f4fe0;
+  --blue-strong: #1740b8;
+  --blue-tint: #e6edff;
+  --on-blue: #ffffff;
+
+  --sun: #ffc43d;
+  --sun-ink: #3d2b00;
+
+  --coral: #e8435f;
+  --coral-tint: #ffe6ea;
+  --on-coral: #ffffff;
+
+  --free: #0f8f6a;
+  --on-free: #ffffff;
+
+  --cat-musique: #b8307f;
+  --cat-sport: #0f8f6a;
+  --cat-technologie: #5b3fd9;
+
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --shadow: 0 1px 2px rgba(14, 27, 61, 0.06), 0 8px 24px rgba(23, 64, 184, 0.08);
+
+  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8edff;
+    --ink-soft: #a3b0d0;
+    --bg: #0a1229;
+    --surface: #111c3a;
+    --line: #223256;
+    --header-bg: #0d1a40;
+
+    --blue: #7d9bff;
+    --blue-strong: #a2b8ff;
+    --blue-tint: #1a2a5c;
+    --on-blue: #0a1229;
+
+    --sun: #ffcf5c;
+    --sun-ink: #2e2000;
+
+    --coral: #ff7089;
+    --coral-tint: #3b1a2a;
+    --on-coral: #2a0a13;
+
+    --free: #3dd6a6;
+    --on-free: #04251b;
+
+    --cat-musique: #ff7fc0;
+    --cat-sport: #3dd6a6;
+    --cat-technologie: #a897ff;
+
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.2rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--blue); }
+img { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; }
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Composants partagés ---------- */
+
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--ink);
+  font-weight: 700;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.fav-btn:hover {
+  border-color: var(--coral);
+  color: var(--coral);
+}
+.fav-btn.active {
+  border-color: var(--coral);
+  background: var(--coral);
+  color: var(--on-coral);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.1rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--blue);
+  color: var(--on-blue);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn:hover { background: var(--blue-strong); }
+
+.badge {
+  --cat: var(--blue);
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--cat) 14%, var(--surface));
+  color: var(--cat);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.badge[data-category='Musique'] { --cat: var(--cat-musique); }
+.badge[data-category='Sport'] { --cat: var(--cat-sport); }
+.badge[data-category='Technologie'] { --cat: var(--cat-technologie); }
+
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  background: var(--surface);
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius-lg);
+  color: var(--ink-soft);
+}
+.state h2 { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

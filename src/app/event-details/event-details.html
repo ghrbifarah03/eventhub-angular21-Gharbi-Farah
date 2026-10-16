@@ -1,11 +1,38 @@
+<a class="back" routerLink="/events">Retour aux événements</a>
+
 @if (event; as ev) {
-  <h2>{{ ev.title }}</h2>
-  <img [src]="ev.imageUrl" [alt]="ev.title" />
-  <p>Catégorie : {{ ev.category }}</p>
-  <p>Date : {{ ev.date }}</p>
-  <p>Lieu : {{ ev.place }}</p>
-  <p>Prix : {{ ev.price }} TND</p>
-  <p>{{ ev.description }}</p>
+  <article class="details">
+    <img class="cover" [src]="ev.imageUrl" [alt]="ev.title" />
+    <div class="info">
+      <span class="badge" [attr.data-category]="ev.category">{{ ev.category }}</span>
+      <h2>{{ ev.title }}</h2>
+      <p class="description">{{ ev.description }}</p>
+      <dl class="facts">
+        <div>
+          <dt>Date</dt>
+          <dd>{{ ev.date | date: 'dd/MM/yyyy' }}</dd>
+        </div>
+        <div>
+          <dt>Lieu</dt>
+          <dd>{{ ev.place }}</dd>
+        </div>
+        <div>
+          <dt>Prix</dt>
+          <dd>
+            @if (ev.price === 0) {
+              Gratuit
+            } @else {
+              {{ ev.price | currency: 'TND' }}
+            }
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </article>
 } @else {
-  <p>Événement introuvable</p>
+  <div class="state">
+    <h2>Événement introuvable</h2>
+    <p>Cet événement n'existe pas. Retourne au catalogue pour voir ceux qui sont disponibles.</p>
+    <a class="btn" routerLink="/events">Voir tous les événements</a>
+  </div>
 }
