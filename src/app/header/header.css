@@ -1,0 +1,23 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: #4f46e5;
+  color: white;
+}
+h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+nav a {
+  color: #e0e7ff;
+  text-decoration: none;
+  cursor: pointer;
+}

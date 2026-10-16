@@ -1,0 +1,20 @@
+<h1>Catalogue d'événements</h1>
+<p>Favoris : {{ favoritesCount() }}</p>
+
+<div class="filters">
+  @for (category of categories; track category) {
+    <button (click)="selectCategory(category)">{{ category }}</button>
+  }
+</div>
+
+<div class="grid">
+  @for (event of filteredEvents(); track event.id) {
+    <app-event-card
+      [event]="event"
+      [isFavorite]="isFavorite(event.id)"
+      (toggleFavorite)="onToggleFavorite($event)"
+    />
+  } @empty {
+    <p>Aucun événement disponible</p>
+  }
+</div>

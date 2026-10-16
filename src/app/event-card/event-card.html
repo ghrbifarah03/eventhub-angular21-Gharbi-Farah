@@ -1,0 +1,15 @@
+<article class="card">
+  <img [src]="event().imageUrl" [alt]="event().title" />
+  <h3>{{ event().title }}</h3>
+  <p>{{ event().category }}</p>
+  <p>{{ event().date | date: 'dd/MM/yyyy' }}</p>
+  <p>{{ event().price | currency: 'TND' }}</p>
+
+  <button [ngClass]="{ active: isFavorite() }" (click)="onToggle()">
+    @if (isFavorite()) {
+      Retirer des favoris
+    } @else {
+      Ajouter aux favoris
+    }
+  </button>
+</article>
