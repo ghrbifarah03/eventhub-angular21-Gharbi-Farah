@@ -21,3 +21,9 @@ nav a {
   text-decoration: none;
   cursor: pointer;
 }
+
+nav a.active {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}

@@ -1,1 +1,11 @@
-<p>event-details works!</p>
+@if (event; as ev) {
+  <h2>{{ ev.title }}</h2>
+  <img [src]="ev.imageUrl" [alt]="ev.title" />
+  <p>Catégorie : {{ ev.category }}</p>
+  <p>Date : {{ ev.date }}</p>
+  <p>Lieu : {{ ev.place }}</p>
+  <p>Prix : {{ ev.price }} TND</p>
+  <p>{{ ev.description }}</p>
+} @else {
+  <p>Événement introuvable</p>
+}

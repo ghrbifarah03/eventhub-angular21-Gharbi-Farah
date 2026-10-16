@@ -1,15 +1,8 @@
 import { Component, computed, signal } from '@angular/core';
 import { EventCard } from '../event-card/event-card';
 
-@Component({
-  selector: 'app-event-list',
-    imports: [EventCard],
-  templateUrl: './event-list.html',
-  styleUrl: './event-list.css',
-})
-export class EventList {
-  events = signal([
-    {
+export const EVENTS = [
+{
       id: 1,
       title: 'Soirée Open Mic',
       category: 'Musique',
@@ -68,8 +61,16 @@ export class EventList {
       price: 0,
       imageUrl: 'images/workout.svg',
       description: 'Une séance de callisthénie en plein air, tous niveaux',
-    },
-  ]);
+    },];
+
+@Component({
+  selector: 'app-event-list',
+    imports: [EventCard],
+  templateUrl: './event-list.html',
+  styleUrl: './event-list.css',
+})
+export class EventList {
+    events = signal(EVENTS);
 
   favorites = signal<number[]>([]);
 
