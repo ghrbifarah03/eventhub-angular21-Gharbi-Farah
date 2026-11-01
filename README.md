@@ -36,3 +36,13 @@ Puis ouvrir http://localhost:4200
 - Polices : Bricolage Grotesque (titres) et Plus Jakarta Sans (texte).
 - Styles partagés (couleurs, boutons, badges) dans `src/styles.css` via des variables CSS.
 
+## Fonctionnalités ajoutées (Partie 2)
+- Formulaire réactif de création d'un événement (EventForm, route /events/add) avec validations
+- Affichage en direct de la valeur et du statut du formulaire (Signals)
+- Service EventService (providedIn root) : source unique des données avec Signals
+- Compteurs : total, favoris, événements gratuits (computed)
+- Ajout et suppression d'événements, favoris mis à jour après suppression
+
+## Captures d'écran (Partie 2)
+![Formulaire](screenshots/formulaire.png)
+![Liste mise à jour](screenshots/liste-apres-ajout.png)
