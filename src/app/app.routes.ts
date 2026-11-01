@@ -3,10 +3,12 @@ import { EventList } from './event-list/event-list';
 import { EventDetails } from './event-details/event-details';
 import { About } from './about/about';
 import { NotFound } from './not-found/not-found';
+import { EventForm } from './event-form/event-form';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'events', pathMatch: 'full' },
   { path: 'events', component: EventList },
+  { path: 'events/add', component: EventForm },
   { path: 'events/:id', component: EventDetails },
   {path: 'about', loadComponent: () => import('./about/about').then((c) => c.About)},
   { path: '**', component: NotFound },

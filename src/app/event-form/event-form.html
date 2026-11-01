@@ -1,0 +1,83 @@
+<h2>Add Event</h2>
+<form [formGroup]="eventForm">
+<div>
+    <label>Title:</label>
+    <input type="text" id="title" [formControlName]="'title'">
+    @if(title?.touched){
+    @if (title?.errors?.['required']) {
+            <p>Title is required</p>
+          }@else if (title?.errors?.['minlength']) {
+            <p>Title must be at least 5 characters long</p>
+          } @else if (title?.errors?.['maxlength']) {
+            <p>Title cannot exceed 50 characters</p>
+          }
+        }
+</div>
+<div>
+    <label>Category:</label>
+    <select id="category" [formControlName]="'category'">
+            <option value="">-- Choose Category --</option>
+            @for (c of categories; track c) {
+              <option [value]="c">{{ c }}</option>
+            }
+          </select>
+          @if(category?.touched){
+          @if (category?.errors?.['required']) {
+            <p>Category is required</p>
+          }
+        }
+</div>
+<div>
+    <label>Date:</label>
+    <input type="date" id="date" [formControlName]="'date'">
+    @if(date?.touched){
+    @if (date?.errors?.['required']) {
+            <p>Date is required</p>
+          } @else if (date?.errors?.['invalidDate']) {
+            <p>Date must be in the future</p>
+          }
+        }
+</div>
+<div>
+    <label>Place:</label>
+    <input type="text" id="place" [formControlName]="'place'">
+    @if(place?.touched){
+    @if (place?.errors?.['required']) {
+            <p>Place is required</p>
+          } @else if (place?.errors?.['minlength']) {
+            <p>Place must be at least 3 characters long</p>
+          }
+        }
+</div>
+<div>
+          <label>Price</label>
+          <input type="number" id="price" [formControlName]="'price'">
+          @if(price?.touched){
+            @if (price?.errors?.['required']) {
+              <p>Price is required</p>
+            } @else if (price?.errors?.['min']) {
+              <p>Price cannot be negative</p>
+            }
+        }
+        </div>
+<div>
+          <label>Image (optional)</label>
+          <input type="text" id="imageUrl" [formControlName]="'imageUrl'">
+</div>        
+
+<div>
+          <label>Description</label>
+          <textarea id="description" rows="4" [formControlName]="'description'"></textarea>
+            @if(description?.touched){
+            @if (description?.errors?.['required']) {
+              <p>Description is required</p>
+            } @else if (description?.errors?.['minlength']) {
+              <p>Description must be at least 20 characters long</p>
+            }
+        }
+        </div>
+
+<button type="submit" [disabled]="eventForm.invalid">
+          Ajouter
+        </button>
+</form>
