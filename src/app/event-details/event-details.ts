@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { EVENTS } from '../event-list/event-list';
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { EventService, Event } from '../event-service';
 
 @Component({
   selector: 'app-event-details',
@@ -11,12 +11,15 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 })
 export class EventDetails {
 
-   event?: (typeof EVENTS)[number];
+   event?: Event;
 
-  constructor(private act: ActivatedRoute) {}
+  constructor(
+    private act: ActivatedRoute,
+    private eventService: EventService,
+  ) {}
 
   ngOnInit() {
     const id = Number(this.act.snapshot.params['id']);
-    this.event = EVENTS.find((e) => e.id === id);
+    this.event = this.eventService.getEventById(id);
   }
 }

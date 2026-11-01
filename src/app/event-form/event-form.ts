@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EventService } from '../event-service';
 
 @Component({
   selector: 'app-event-form',
@@ -14,7 +15,8 @@ export class EventForm {
     eventForm!: FormGroup;
   formValue = signal<any>({});
   formStatus = signal<string>('INVALID');
-constructor(private router: Router) {} 
+constructor(private router: Router,   private eventService: EventService,
+) {} 
      
     ngOnInit() {
     
@@ -66,8 +68,7 @@ constructor(private router: Router) {}
       return;
     }
 
-    console.log('Événement à ajouter :', this.eventForm.value); // temporaire : remplacé à l'étape B5
-
+    this.eventService.addEvent(this.eventForm.value);
     this.eventForm.reset();
     this.router.navigate(['/events']);
   }

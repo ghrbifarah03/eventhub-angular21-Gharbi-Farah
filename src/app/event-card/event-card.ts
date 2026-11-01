@@ -26,4 +26,9 @@ export class EventCard {
   onToggle() {
     this.toggleFavorite.emit(this.event().id);
   }
+    remove = output<number>();
+
+  onRemove() {
+    this.remove.emit(this.event().id);
+  }
 }

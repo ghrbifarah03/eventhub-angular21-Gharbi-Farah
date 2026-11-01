@@ -8,9 +8,13 @@
   <p class="favorites" aria-live="polite">
     <span aria-hidden="true">♥</span>
     Favoris
-    <strong>{{ favoritesCount() }}</strong>
+    <strong>{{ eventService.favoriteCount() }}</strong>
   </p>
 </section>
+<p class="count">
+  Total : {{ eventService.eventCount() }} · Favoris : {{ eventService.favoriteCount() }} ·
+  Gratuits : {{ eventService.freeEventCount() }}
+</p>
 
 <div class="toolbar">
   <div class="filters" role="group" aria-label="Filtrer par catégorie">
@@ -39,6 +43,7 @@
       [event]="event"
       [isFavorite]="isFavorite(event.id)"
       (toggleFavorite)="onToggleFavorite($event)"
+      (remove)="onDelete($event)"
     />
   } @empty {
     <p class="state">Aucun événement disponible</p>
