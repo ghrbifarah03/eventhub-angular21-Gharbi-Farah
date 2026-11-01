@@ -77,7 +77,13 @@
         }
         </div>
 
-<button type="submit" [disabled]="eventForm.invalid">
+<button type="submit" [disabled]="eventForm.invalid" (click)="addEvent()">
           Ajouter
         </button>
+        
 </form>
+<section>
+  <h3>Form state</h3>
+  <pre>{{ formValue() | json }}</pre>
+  <p>Status: {{ formStatus() }}</p>
+</section>
